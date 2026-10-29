@@ -29,3 +29,7 @@
 # Windows-only scripts are fine either way, but keep them LF for consistency
 # with the rest of the tree; PowerShell reads LF without complaint.
 *.ps1           text eol=lf
+
+# cmd.exe parses batch files by byte offset, so an LF-only .cmd breaks
+# (Impeccable's .claude/skills/impeccable/scripts/impeccable.cmd).
+*.cmd           text eol=crlf
