@@ -7,6 +7,17 @@
     "prompts.chat": {
       "type": "http",
       "url": "https://prompts.chat/api/mcp"
+    },
+    "headroom": {
+      "type": "stdio",
+      "command": "headroom",
+      "args": [
+        "mcp",
+        "serve"
+      ],
+      "env": {
+        "HEADROOM_TELEMETRY": "off"
+      }
     }
   }
 }
