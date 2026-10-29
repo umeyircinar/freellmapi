@@ -18,6 +18,10 @@
       "env": {
         "HEADROOM_TELEMETRY": "off"
       }
+    },
+    "omniroute": {
+      "type": "http",
+      "url": "http://localhost:20128/api/mcp/stream"
     }
   }
 }

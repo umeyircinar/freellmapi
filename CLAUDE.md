@@ -11,6 +11,40 @@ desktop app in `desktop/`.
 - `docs/en/` is the authoritative documentation; `docs/en/README.md` is the
   index. When it and `docs/freellmapi.md` disagree, follow `docs/en/` and
   update `docs/freellmapi.md` to match.
+- The user is not technical: explain in plain Turkish, avoid jargon, and give
+  click-by-click steps for anything they must do themselves.
+
+## Design and tooling
+
+Skills vendored under `.claude/skills/` (each folder keeps its upstream
+license; update by re-copying from upstream, there is no installer):
+
+- `frontend-design` (Anthropic): visual direction for new or reshaped UI.
+- `impeccable`: audit, critique and polish of existing UI. Its
+  `scripts/impeccable` launcher downloads a checksum-pinned engine binary on
+  first use; its design-detector hooks are deliberately not registered.
+- `design-taste-frontend` (taste-skill): websites and landing pages. Working
+  files go to `.taste-skill/` (gitignored); needs Chrome (`CHROME_PATH`).
+- Emil Kowalski's skills (`emil-design-eng`, `animate`, `review-animations`,
+  …): motion and interface detail.
+- `logo-design`: logos and brand marks. `assets/library/svg/` holds real
+  brands' logos as reference only; see its `TRADEMARKS.md`.
+
+The dashboard (`client/`) is an Operate surface: Geist, `rounded-3xl` cards,
+`PageHeader`, the shared `ui/` components and its own tokens. Refine within
+that system rather than restyling it, and keep every string in the i18n
+catalogs (`client/src/i18n/locales/`, 60 locales, checked by
+`npm run check:i18n`).
+
+MCP servers in `.mcp.json`:
+
+- `figma` and `prompts.chat` (Awesome ChatGPT Prompts): remote; cloud
+  sessions need `mcp.figma.com` and `prompts.chat` in the environment's
+  allowed domains. Figma asks for an OAuth sign-in on first use.
+- `headroom`: needs the `headroom` CLI (`pip install "headroom-ai[all]"`);
+  telemetry is turned off.
+- `omniroute`: OmniRoute's MCP tools; needs OmniRoute running locally on
+  port 20128 (`npm install -g omniroute && omniroute`).
 
 ## gstack (REQUIRED — global install)
 
