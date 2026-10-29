@@ -47,6 +47,7 @@ import LogsPage from '@/pages/LogsPage'
 import PremiumPage from '@/pages/PremiumPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import AgentsPage from '@/pages/AgentsPage'
+import MarketingPage from '@/pages/MarketingPage'
 
 // Every failed mutation surfaces as an error toast, so no action fails
 // silently. A page that already shows the failure inline can opt out with
@@ -500,6 +501,8 @@ function App() {
                       <Route path="/analytics" element={<AnalyticsPage />} />
                       <Route path="/logs" element={<LogsPage />} />
                       <Route path="/premium" element={<PremiumPage />} />
+                      {/* Hidden: not in the nav until ad accounts can be connected. */}
+                      <Route path="/marketing" element={<MarketingPage />} />
                       <Route path="/test" element={<Navigate to="/playground" replace />} />
                       <Route path="/health" element={<Navigate to="/keys" replace />} />
                       <Route path="*" element={<NotFoundPage />} />
