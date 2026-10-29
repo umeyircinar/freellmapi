@@ -78,7 +78,7 @@ export function GettingStarted() {
             type="button"
             aria-label={t('common.dismiss')}
             onClick={() => { setDismissed(true); writeFlag(DISMISS_KEY) }}
-            className="rounded-md p-1 text-muted-foreground/60 transition-colors hover:text-foreground"
+            className="rounded-md p-1.5 text-muted-foreground transition-colors hover:text-foreground"
           >
             <X className="size-3.5" />
           </button>
@@ -168,7 +168,7 @@ function Step({
       >
         {done ? <Check className="size-3" /> : index}
       </span>
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 basis-[calc(100%-2rem)] sm:basis-0">
         <p className={`text-sm ${done ? 'text-muted-foreground line-through decoration-muted-foreground/40' : 'font-medium'}`}>{title}</p>
         {!done && <p className="text-xs text-muted-foreground">{description}</p>}
       </div>

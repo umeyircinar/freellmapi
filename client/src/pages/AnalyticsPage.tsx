@@ -714,6 +714,12 @@ export default function AnalyticsPage() {
   const p95Latency = summary?.p95LatencyMs
   const p95Value = p95Latency != null ? `${p95Latency} ms` : '—'
 
+  // With no requests in the range there is no rate or average to report: the
+  // server sends 0 for both, which reads as "every request failed" and "instant".
+  const hasRequests = (summary?.totalRequests ?? 0) > 0
+  const successValue = hasRequests ? `${summary?.successRate ?? 0}%` : '—'
+  const avgLatencyValue = hasRequests ? `${summary?.avgLatencyMs ?? 0} ms` : '—'
+
   // TTFT-by-provider is empty when no provider recorded a streaming first
   // token; render a muted line instead of an axis-only empty chart.
   const ttftHasData = byPlatform.some((p) => (p.avgTtfbMs ?? 0) > 0)
@@ -747,10 +753,10 @@ export default function AnalyticsPage() {
           ) : (
             <>
               <Stat icon={Activity} label={t('analytics.requests')} value={summary?.totalRequests ?? 0} hint={requestsHint} />
-              <Stat icon={CheckCircle2} label={t('analytics.successRate')} value={`${summary?.successRate ?? 0}%`} />
+              <Stat icon={CheckCircle2} label={t('analytics.successRate')} value={successValue} />
               <Stat icon={ArrowDown} label={t('analytics.inputTokens')} value={formatTokens(summary?.totalInputTokens)} />
               <Stat icon={ArrowUp} label={t('analytics.outputTokens')} value={formatTokens(summary?.totalOutputTokens)} />
-              <Stat icon={Gauge} label={t('analytics.avgLatency')} value={`${summary?.avgLatencyMs ?? 0} ms`} />
+              <Stat icon={Gauge} label={t('analytics.avgLatency')} value={avgLatencyValue} />
               <Stat icon={Clock} label={t('analytics.p95Latency')} value={p95Value} />
               <Stat icon={Zap} label={t('analytics.avgTtft')} value={ttftValue} />
               {/* Priced per request at the served model's paid-API equivalent

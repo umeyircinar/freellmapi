@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    },
+    "prompts.chat": {
+      "type": "http",
+      "url": "https://prompts.chat/api/mcp"
+    },
+    "headroom": {
+      "type": "stdio",
+      "command": "headroom",
+      "args": [
+        "mcp",
+        "serve"
+      ],
+      "env": {
+        "HEADROOM_TELEMETRY": "off"
+      }
+    },
+    "omniroute": {
+      "type": "http",
+      "url": "http://localhost:20128/api/mcp/stream"
+    }
+  }
+}

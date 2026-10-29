@@ -130,13 +130,12 @@ export function ChainManager() {
   }
 
   return (
-    <section className="rounded-lg border bg-card">
+    <section className="rounded-3xl border bg-card">
       <button
         type="button"
         onClick={toggle}
         aria-expanded={!collapsed}
-        aria-label={collapsed ? t('common.show') : t('common.hide')}
-        className={`flex w-full flex-wrap items-center justify-between gap-2 px-4 py-3 text-left ${collapsed ? '' : 'border-b'}`}
+        className={`flex w-full flex-wrap items-center justify-between gap-2 px-5 py-3 text-left ${collapsed ? '' : 'border-b'}`}
       >
         <div className="flex items-center gap-2">
           <Layers className="size-4 text-muted-foreground" />
